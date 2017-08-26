@@ -7,9 +7,22 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "test",
+    "test": "jest --watch",
     "serve": "ts-node lib/server.ts",
     "webpack": "webpack -wd"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+    },
+    "testMatch": [
+      "**/__tests__/*.(ts|tsx|js)"
+    ]
   },
   "keywords": [
     "React",
@@ -31,11 +44,13 @@
     "@types/react": "^16.0.5",
     "@types/react-dom": "^15.5.4",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^20.0.4",
     "path": "^0.12.7",
     "ts-loader": "^2.3.3",
     "ts-node": "^3.3.0",
     "tsc": "^1.20150623.0",
     "typescript": "^2.4.2",
+    "typestyle": "^1.3.8",
     "webpack": "^3.5.5"
   }
 }
