@@ -1,16 +1,22 @@
 import * as React from "react";
 import {
   Article as ArticleType,
-  Author as AuthorType
+  Author as AuthorType,
+  ArticleActions
 } from "../../types/index";
 import Article from "../Article";
 const ArticleList = (props: ArticleListProps) => {
-  const { articles, authors } = props;
+  const { articles, articleActions } = props;
   return (
     <div>
       {articles.map(article => {
-        const author = authors.find(author => author.id == article.authorId);
-        return <Article key={article.id} article={article} author={author} />;
+        return (
+          <Article
+            key={article.id}
+            article={article}
+            author={articleActions.lookupAuthor(article.authorId)}
+          />
+        );
       })}
     </div>
   );
@@ -19,6 +25,7 @@ const ArticleList = (props: ArticleListProps) => {
 interface ArticleListProps {
   articles: ArticleType[];
   authors: AuthorType[];
+  articleActions: ArticleActions;
 }
 
 export default ArticleList;

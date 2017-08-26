@@ -1,6 +1,6 @@
 import * as React from "react";
 import DataApi from "../../api/DataApi";
-import { Article, Author } from "../../types";
+import { Article, Author, ArticleActions } from "../../types";
 const { data } = require("../../../lib/testData.json");
 const api = new DataApi(data);
 
@@ -18,11 +18,18 @@ class App extends React.Component {
       authors: api.getAuthors()
     };
   }
-
+  articleActions: ArticleActions = {
+    lookupAuthor: (authorId: string): Author | undefined =>
+      this.state.authors.find(author => author.id == authorId)
+  };
   render() {
     return (
       <div>
-        <ArticleList articles={this.state.articles} authors={this.state.authors} />
+        <ArticleList
+          articles={this.state.articles}
+          authors={this.state.authors}
+          articleActions={this.articleActions}
+        />
       </div>
     );
   }

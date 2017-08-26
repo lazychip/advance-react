@@ -12,3 +12,7 @@ export interface Author {
   lastName: string;
   website: string;
 }
+
+export interface ArticleActions {
+  lookupAuthor: Function
+}
