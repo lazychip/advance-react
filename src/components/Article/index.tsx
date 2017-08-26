@@ -50,7 +50,7 @@ const Article = (props: ArticleProps) => {
 interface ArticleProps {
   key: string | number;
   article: ArticleType;
-  author: AuthorType | undefined;
+  author: AuthorType;
 }
 
 export default Article;
